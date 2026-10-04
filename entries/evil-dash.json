@@ -1,0 +1,5 @@
+{
+  "name": "evil-dash",
+  "source": { "source": "git-subdir", "url": "baselane-sh/mods-catalog-spike", "path": "author/evil-dash", "ref": "evil-dash--v0.2.0" },
+  "category": "style"
+}
