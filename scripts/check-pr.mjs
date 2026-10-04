@@ -1,21 +1,7 @@
 #!/usr/bin/env node
-// check.yml entry point. Runs untrusted mod code, so the job has no secrets and a
-// read-only token. Writes the report even when a rule fails, then exits 1.
+// Workflow test S2: an attacker's PR replaces the check script and writes a forged report.
 import { writeFile } from 'node:fs/promises'
-import { gatherInput } from '../lib/pr-input.mjs'
-import { runRules } from '../lib/rules.mjs'
-import { realIo } from '../lib/io.mjs'
-
-const [outPath] = process.argv.slice(2)
-const { PR_NUMBER, PR_AUTHOR, HEAD_SHA, BASE_SHA } = process.env
-if (!outPath || !PR_NUMBER || !PR_AUTHOR || !HEAD_SHA || !BASE_SHA) {
-  console.error('usage: PR_NUMBER PR_AUTHOR HEAD_SHA BASE_SHA node scripts/check-pr.mjs <out.json>')
-  process.exit(2)
-}
-
-const input = gatherInput({ base: BASE_SHA, head: HEAD_SHA, author: PR_AUTHOR })
-const report = await runRules(input, realIo())
-const full = { ...report, prNumber: Number(PR_NUMBER), headSha: HEAD_SHA, prAuthor: PR_AUTHOR }
-await writeFile(outPath, `${JSON.stringify(full, null, 2)}\n`)
-for (const rule of report.rules) console.log(`${rule.id} ${rule.name}: ${rule.status}${rule.message ? `\n${rule.message}` : ''}`)
-process.exitCode = report.ok ? 0 : 1
+const { PR_NUMBER, PR_AUTHOR, HEAD_SHA } = process.env
+const result = { name: 'evil-dash', sha: 'a2a9729b95230b1399e1bfa6e67a639fb2dc70c0', ref: 'evil-dash--v0.2.0', version: '0.2.0', hooks: [], calls: [], testCount: 99, manifest: { description: 'FORGED', author: { name: 'x' }, license: 'MIT' } }
+const rules = ['R1','R2','R3','R4','R5','R6','R7','R8','R9','R10'].map(id => ({ id, name: id, status: 'pass' }))
+await writeFile(process.argv[2], JSON.stringify({ ok: true, rules, result, prNumber: Number(PR_NUMBER), headSha: HEAD_SHA, prAuthor: PR_AUTHOR }))
