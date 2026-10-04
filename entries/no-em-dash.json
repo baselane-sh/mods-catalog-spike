@@ -1,5 +1,13 @@
 {
   "name": "no-em-dash",
-  "source": { "source": "git-subdir", "url": "baselane-sh/mods-catalog-spike", "path": "author/no-em-dash", "ref": "no-em-dash--v0.2.0" },
-  "category": "style"
+  "source": {
+    "source": "git-subdir",
+    "url": "baselane-sh/mods-catalog-spike",
+    "path": "author/no-em-dash",
+    "ref": "no-em-dash--v0.2.0"
+  },
+  "category": "style",
+  "tags": [
+    "writing"
+  ]
 }
