@@ -6,5 +6,35 @@
   },
   "description": "Claude Code mods, checked and pinned. Browse them at https://mods.baselane.sh",
   "forceRemoveDeletedPlugins": true,
-  "plugins": []
+  "plugins": [
+    {
+      "name": "no-em-dash",
+      "source": {
+        "source": "git-subdir",
+        "url": "baselane-sh/mods-catalog-spike",
+        "path": "author/no-em-dash",
+        "ref": "no-em-dash--v0.2.0",
+        "sha": "dd7bf0d8e574f17e9aceb2e9fa0f843a1f6f4b34"
+      },
+      "description": "Never writes the em-dash character. Uses a comma, colon, period or parentheses.",
+      "author": {
+        "name": "Baselane",
+        "url": "https://baselane.sh"
+      },
+      "license": "MIT",
+      "homepage": "https://mods.baselane.sh/mods/no-em-dash/",
+      "repository": "https://github.com/baselane-sh/mods-catalog-spike",
+      "category": "style",
+      "metadata": {
+        "version": "0.2.0",
+        "submitter": "mohammad0omar",
+        "verified": false,
+        "hooks": [
+          "prompt.compose"
+        ],
+        "calls": [],
+        "gallery": "https://mods.baselane.sh/mods/no-em-dash/"
+      }
+    }
+  ]
 }
