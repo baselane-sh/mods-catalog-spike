@@ -1,0 +1,10 @@
+{
+  "name": "evil-dash",
+  "version": "0.2.0",
+  "description": "Test mod for the gallery merge bot. Its test tries to rewrite the check report.",
+  "author": {
+    "name": "Baselane",
+    "url": "https://baselane.sh"
+  },
+  "license": "MIT"
+}
